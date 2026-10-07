@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+  <title>
+    {% if page.title %}
+      {{ page.title }} | {{ site.title }}
+    {% else %}
+      {{ site.title }}
+    {% endif %}
+  </title>
+
+  {% seo %}
+
+{% if page.collection == "services" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  ...
+}
+</script>
+{% endif %}
+
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="container">
+
+      <a href="{{ '/' | relative_url }}" class="site-logo">
+        🐷{{ site.title }}🦜
+      </a>
+
+      <nav class="site-nav">
+        
+        <a href="{{ '/usluge/' | relative_url }}">Usluge</a>
+        <a href="{{ '/blog/' | relative_url }}">Blog</a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <main>
+    <div class="container">
+      {{ content }}
+    </div>
+  </main>
+
+
+  <footer class="site-footer">
+
+  <div class="container">
+
+    <nav class="footer-nav">
+
+      <a href="{{ '/o-nama/' | relative_url }}">
+        O nama
+      </a>
+
+      <a href="{{ '/sitemap.xml' | relative_url }}">
+        Sitemap
+      </a>
+
+    </nav>
+
+    <p>
+      &copy; {{ 'now' | date: "%Y" }} {{ site.title }}
+    </p>
+
+  </div>
+
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <title>{{ page.title }} | Čuvanje Ljubimaca</title>
+  
+  {% if page.description %}
+    <meta name="description" content="{{ page.description }}">
+  {% endif %}
+
+  <!-- Open Graph / Social Share Meta Tags -->
+  <meta property="og:title" content="{{ page.title }}">
+  <meta property="og:description" content="{{ page.description }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:locale" content="sr_RS">
+  <meta property="og:site_name" content="Čuvanje Ljubimaca">
+  {% if page.images and page.images[0] %}
+    <meta property="og:image" content="{{ page.images[0] | absolute_url }}">
+  {% endif %}
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ page.title }}">
+  <meta name="twitter:description" content="{{ page.description }}">
+  {% if page.images and page.images[0] %}
+    <meta name="twitter:image" content="{{ page.images[0] | absolute_url }}">
+  {% endif %}
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "{{ page.title }}",
+    "description": "{{ page.description }}",
+    "url": "{{ page.url | absolute_url }}",
+    "telephone": "{{ page.phone }}",
+    "email": "{{ page.email }}",
+    "areaServed": [
+      {% for city in page.cities %}"{{ city }}"{% unless forloop.last %}, {% endunless %}{% endfor %}
+    ],
+    {% if page.images and page.images[0] %}
+        "image": "{{ page.images[0] | absolute_url }}",
+        {% endif %}
+    {% if page.offers %}
+      {% assign sorted_offers = page.offers | sort: "price" %}
+      {% assign min_price = sorted_offers.first.price %}
+      {% assign max_price = sorted_offers.last.price %}
+      "priceRange": "{{ min_price }} - {{ max_price }} {{ sorted_offers.first.priceCurrency }}",
+      "makesOffer": [
+        {% for offer in page.offers %}
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "{{ offer.name }}",
+            "description": "{{ offer.description }}"
+          },
+          "price": "{{ offer.price }}",
+          "priceCurrency": "{{ offer.priceCurrency }}"
+        }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    {% endif %}
+  </script>
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="site-logo">🐷 Čuvanje Ljubimaca 🦜</a>
+      <nav class="site-nav">
+        <a href="/usluge/">Usluge</a>
+        <a href="/blog/">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      
+      <!-- Hero Section -->
+      {% if page.images and page.images[0] %}
+        <section class="service-hero">
+          <img 
+            src="{{ page.images[0] | relative_url }}" 
+            alt="{{ page.title }}" 
+            class="service-hero-image"
+          >
+          <div class="service-hero-overlay">
+            <h1>{{ page.title }}</h1>
+            {% if page.description %}
+              <p>{{ page.description }}</p>
+            {% endif %}
+          </div>
+        </section>
+      {% else %}
+        <h1>{{ page.title }}</h1>
+        {% if page.description %}
+          <p>{{ page.description }}</p>
+        {% endif %}
+      {% endif %}
+
+      <!-- Quick Contact & Social Block -->
+      <div class="service-contact-grid">
+        <section class="service-info-box">
+          <h2>Kontakt</h2>
+          {% if page.phone %}
+            <p>
+              <strong>Telefon:</strong> 
+              <a href="tel:{{ page.phone }}">{{ page.phone }}</a>
+            </p>
+          {% endif %}
+          {% if page.email and page.email != "" %}
+            <p>
+              <strong>Email:</strong> 
+              <a href="mailto:{{ page.email }}">{{ page.email }}</a>
+            </p>
+          {% endif %}
+        </section>
+
+        {% if page.social.instagram or page.social.facebook %}
+          <section class="service-info-box">
+            <h2>Društvene mreže</h2>
+            <div class="social-buttons">
+              {% if page.social.instagram %}
+                <a href="{{ page.social.instagram }}" target="_blank" rel="nofollow noopener" class="social-button instagram-button">Instagram</a>
+              {% endif %}
+              {% if page.social.facebook %}
+                <a href="{{ page.social.facebook }}" target="_blank" rel="nofollow noopener" class="social-button facebook-button">Facebook</a>
+              {% endif %}
+            </div>
+          </section>
+        {% endif %}
+      </div>
+
+      <!-- Quick Summary Details -->
+      <h2>Usluga ukratko</h2>
+      <p>
+        <strong>Osnovna usluga:</strong>
+        {% for animal in page.animals %}
+          {% case animal %}
+            {% when "psi" %}<a href="{{ '/cuvanje-pasa/' | relative_url }}">Čuvanje Pasa</a>
+            {% when "psi2" %}<a href="{{ '/setanje-pasa/' | relative_url }}">Šetanje Pasa</a>
+            {% when "macke" %}<a href="{{ '/cuvanje-macaka/' | relative_url }}">Čuvanje Mačaka</a>
+            {% when "papagaji" %}<a href="{{ '/cuvanje-papagaja/' | relative_url }}">Čuvanje Papagaja</a>
+            {% when "zecevi" %}<a href="{{ '/cuvanje-zeceva/' | relative_url }}">Čuvanje Zečeva</a>
+            {% else %}{{ animal | capitalize }}
+          {% endcase %}
+          {% unless forloop.last %}, {% endunless %}
+        {% endfor %}
+      </p>
+
+      <p>
+        <strong>Dodatne usluge:</strong> {{ page.services | join: ", " }}
+      </p>
+
+      <p>
+        <strong>Gradovi:</strong> {{ page.cities | join: ", " }}
+      </p>
+
+      {% if page.price %}
+        <p>
+          <strong>Cena:</strong> {{ page.price }}
+        </p>
+      {% endif %}
+
+      <!-- Markdown Body Content (O meni, Šetanje, Čuvanje, etc.) -->
+      {{ content }}
+
+      <!-- Gallery Grid (Images index 1 to end) -->
+      {% if page.images.size > 1 %}
+        <h2>Galerija</h2>
+        <div class="service-gallery">
+          {% for image in page.images offset: 1 %}
+            <img 
+              src="{{ image | relative_url }}" 
+              alt="{{ page.title }} - slika {{ forloop.index }}"
+            >
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% if page.google_maps %}
+        <section class="service-info-box" style="margin-top: 30px;">
+            <h2>Iskustva klijenata</h2>
+            <a href="{{ page.google_maps }}" target="_blank" rel="nofollow noopener" class="social-button">
+            Google recenzije
+            </a>
+        </section>
+        {% endif %}
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="/o-nama/">O nama</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </nav>
+      <p>&copy; 2026 Čuvanje Ljubimaca</p>
+    </div>
+  </footer>
+
+</body>
+</html>

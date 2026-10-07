@@ -1,0 +1,98 @@
+---
+layout: default
+title: "Osobe koje nude čuvanje ljubimaca"
+permalink: /usluge/
+---
+
+<section class="services-index">
+
+  <h1>Osobe koje nude čuvanje ljubimaca</h1>
+
+  <p class="services-index-intro">
+    Pronađite osobe koje nude čuvanje i brigu o psima, mačkama
+    i drugim kućnim ljubimcima.
+  </p>
+
+  <div class="service-category-buttons">
+
+    <a
+      href="{{ '/cuvanje-pasa/' | relative_url }}"
+      class="service-category-button"
+    >
+      🐶 Čuvanje pasa
+    </a>
+
+    <a
+      href="{{ '/setanje-pasa/' | relative_url }}"
+      class="service-category-button"
+    >
+      🐶 Šetanje pasa
+    </a>
+
+    <a
+      href="{{ '/cuvanje-macaka/' | relative_url }}"
+      class="service-category-button"
+    >
+      🐱 Čuvanje mačaka
+    </a>
+
+    <a
+      href="{{ '/cuvanje-papagaja/' | relative_url }}"
+      class="service-category-button"
+    >
+      🦜 Čuvanje papagaja
+    </a>
+
+    <a
+      href="{{ '/cuvanje-zeceva/' | relative_url }}"
+      class="service-category-button"
+    >
+      🐰 Čuvanje zečeva
+    </a>
+
+  </div>
+
+  <div class="services-list">
+
+    {% for service in site.services %}
+
+      <article class="service-card">
+
+        {% if service.images and service.images[0] %}
+          <img
+            src="{{ service.images[0] | relative_url }}"
+            alt="{{ service.name }}"
+            class="service-card-image"
+          >
+        {% endif %}
+
+        <div class="service-card-content">
+
+          <h2>
+            <a href="{{ service.url | relative_url }}">
+              {{ service.title }}
+            </a>
+          </h2>
+
+          <p>
+            <strong>Gradovi:</strong>
+            {{ service.cities | join: ", " }}
+          </p>
+
+          <p>
+            {{ service.description }}
+          </p>
+
+          <a href="{{ service.url | relative_url }}">
+            Pogledaj profil →
+          </a>
+
+        </div>
+
+      </article>
+
+    {% endfor %}
+
+  </div>
+
+</section>

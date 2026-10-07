@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+  <title>
+    
+      Šetanje pasa | Čuvanje Ljubimaca
+    
+  </title>
+
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>Šetanje pasa | Čuvanje Ljubimaca</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Šetanje pasa" />
+<meta property="og:locale" content="sr" />
+<meta name="description" content="Pronađite osobe koje nude čuvanje i brigu o kućnim ljubimcima." />
+<meta name="twitter:description" property="og:description" content="Pronađite osobe koje nude čuvanje i brigu o kućnim ljubimcima." />
+<link rel="canonical" href="https://cuvanjeljubimaca.rs/setanje-pasa/" />
+<meta property="og:url" content="https://cuvanjeljubimaca.rs/setanje-pasa/" />
+<meta property="og:site_name" content="Čuvanje Ljubimaca" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Šetanje pasa" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Pronađite osobe koje nude čuvanje i brigu o kućnim ljubimcima.","headline":"Šetanje pasa","url":"https://cuvanjeljubimaca.rs/setanje-pasa/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="container">
+
+      <a href="/" class="site-logo">
+        🐷Čuvanje Ljubimaca🦜
+      </a>
+
+      <nav class="site-nav">
+        
+        <a href="/usluge/">Usluge</a>
+        <a href="/blog/">Blog</a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <main>
+    <div class="container">
+      <h1>Šetanje pasa</h1>
+
+<p>
+  Pronađite osobe koje nude čuvanje pasa.
+</p>
+
+<div class="city-filter">
+
+  <strong>Izaberite grad:</strong>
+
+  <div class="city-buttons">
+
+    <button type="button" class="city-button active" data-city="all">
+      Svi gradovi
+    </button>
+
+    
+
+    
+
+    
+
+    
+      <button
+        type="button"
+        class="city-button"
+        data-city="beograd"
+      >
+        Beograd
+      </button>
+    
+      <button
+        type="button"
+        class="city-button"
+        data-city="novi-sad"
+      >
+        Novi Sad
+      </button>
+    
+
+  </div>
+
+</div>
+
+
+<div class="services-list">
+
+  
+
+    
+
+      <article
+        class="service-card"
+        data-cities="novi-sad"
+      >
+
+      
+          <img
+            src="/assets/images/services/timotijevic0.webp"
+            alt="cuvanje-i-setanje-pasa-novi-sad-milica-timotijevic.md"
+            class="service-card-image"
+          >
+        
+
+        <h3>
+          <a href="/usluge/cuvanje-i-setanje-pasa-novi-sad-milica-timotijevic/">
+            Milica Timotijević – čuvanje i šetanje pasa u Novom Sadu
+          </a>
+        </h3>
+
+        <p>
+        <strong>Gradovi:</strong>
+        Novi Sad
+        </p>
+
+        <p>
+        Profesionalno čuvanje i šetanje pasa u Novom Sadu sa 7+ godina iskustva. Kućni uslovi bez kaveza na Limanu, Grbavici, Detelinari i u centru grada.
+        </p>
+
+        <a href="/usluge/cuvanje-i-setanje-pasa-novi-sad-milica-timotijevic/">
+        Pogledaj profil
+        </a>
+
+      </article>
+
+    
+
+  
+
+    
+
+  
+
+    
+
+  
+
+    
+
+  
+
+    
+
+  
+
+    
+
+      <article
+        class="service-card"
+        data-cities="beograd"
+      >
+
+      
+          <img
+            src="/assets/images/services/cuvanje-pasa.webp"
+            alt="psi-sa-brda-cuvanje-pasa-banovo-brdo.md"
+            class="service-card-image"
+          >
+        
+
+        <h3>
+          <a href="/usluge/psi-sa-brda-cuvanje-pasa-banovo-brdo/">
+            Psi sa brda – čuvanje pasa u kućnim uslovima na Banovom Brdu
+          </a>
+        </h3>
+
+        <p>
+        <strong>Gradovi:</strong>
+        Beograd
+        </p>
+
+        <p>
+        Pružamo usluge šetanja i čuvanja pasa u kućnim uslovima na Banovom brdu.
+        </p>
+
+        <a href="/usluge/psi-sa-brda-cuvanje-pasa-banovo-brdo/">
+        Pogledaj profil
+        </a>
+
+      </article>
+
+    
+
+  
+
+    
+
+  
+
+  
+
+</div>
+
+
+<script>
+  const cityButtons = document.querySelectorAll(".city-button");
+  const serviceCards = document.querySelectorAll(".service-card");
+
+  cityButtons.forEach(function (button) {
+
+    button.addEventListener("click", function () {
+
+      const selectedCity = this.dataset.city;
+
+      cityButtons.forEach(function (button) {
+        button.classList.remove("active");
+      });
+
+      this.classList.add("active");
+
+      serviceCards.forEach(function (card) {
+
+        const cities = card.dataset.cities.split(",");
+
+        if (selectedCity === "all" || cities.includes(selectedCity)) {
+          card.style.display = "";
+        } else {
+          card.style.display = "none";
+        }
+
+      });
+
+    });
+
+  });
+</script>
+    </div>
+  </main>
+
+
+  <footer class="site-footer">
+
+  <div class="container">
+
+    <nav class="footer-nav">
+
+      <a href="/o-nama/">
+        O nama
+      </a>
+
+      <a href="/sitemap.xml">
+        Sitemap
+      </a>
+
+    </nav>
+
+    <p>
+      &copy; 2026 Čuvanje Ljubimaca
+    </p>
+
+  </div>
+
+</footer>
+
+</body>
+</html>

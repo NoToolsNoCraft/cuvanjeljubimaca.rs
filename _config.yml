@@ -1,0 +1,32 @@
+title: "Čuvanje Ljubimaca"
+description: "Pronađite osobe koje nude čuvanje i brigu o kućnim ljubimcima."
+url: "https://cuvanjeljubimaca.rs"
+baseurl: ""
+
+lang: "sr"
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+permalink: /blog/:title/
+
+collections:
+  services:
+    output: true
+    permalink: /usluge/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: "services"
+    values:
+      layout: "service"
+
+paginate: 12
+paginate_path: "/blog/page/:num/"
+
+plugins:
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-sitemap

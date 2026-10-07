@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+  <title>
+    
+      Čuvanje zečeva | Čuvanje Ljubimaca
+    
+  </title>
+
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>Čuvanje zečeva | Čuvanje Ljubimaca</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Čuvanje zečeva" />
+<meta property="og:locale" content="sr" />
+<meta name="description" content="Pronađite osobe koje nude čuvanje i brigu o kućnim ljubimcima." />
+<meta name="twitter:description" property="og:description" content="Pronađite osobe koje nude čuvanje i brigu o kućnim ljubimcima." />
+<link rel="canonical" href="https://cuvanjeljubimaca.rs/cuvanje-zeceva/" />
+<meta property="og:url" content="https://cuvanjeljubimaca.rs/cuvanje-zeceva/" />
+<meta property="og:site_name" content="Čuvanje Ljubimaca" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Čuvanje zečeva" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Pronađite osobe koje nude čuvanje i brigu o kućnim ljubimcima.","headline":"Čuvanje zečeva","url":"https://cuvanjeljubimaca.rs/cuvanje-zeceva/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="container">
+
+      <a href="/" class="site-logo">
+        🐷Čuvanje Ljubimaca🦜
+      </a>
+
+      <nav class="site-nav">
+        
+        <a href="/usluge/">Usluge</a>
+        <a href="/blog/">Blog</a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <main>
+    <div class="container">
+      <h1>Čuvanje zečeva</h1>
+
+<p>
+  Pronađite osobe koje nude čuvanje zečeva.
+</p>
+
+<div class="city-filter">
+
+  <strong>Izaberite grad:</strong>
+
+  <div class="city-buttons">
+
+    <button type="button" class="city-button active" data-city="all">
+      Svi gradovi
+    </button>
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+
+</div>
+
+
+<div class="services-list">
+
+  
+
+    
+
+  
+
+    
+
+  
+
+    
+
+  
+
+    
+
+  
+
+    
+
+  
+
+    
+
+  
+
+    
+
+  
+
+  
+
+</div>
+
+
+
+<script>
+  const cityButtons = document.querySelectorAll(".city-button");
+  const serviceCards = document.querySelectorAll(".service-card");
+
+  cityButtons.forEach(function (button) {
+
+    button.addEventListener("click", function () {
+
+      const selectedCity = this.dataset.city;
+
+      cityButtons.forEach(function (button) {
+        button.classList.remove("active");
+      });
+
+      this.classList.add("active");
+
+      serviceCards.forEach(function (card) {
+
+        const cities = card.dataset.cities.split(",");
+
+        if (selectedCity === "all" || cities.includes(selectedCity)) {
+          card.style.display = "";
+        } else {
+          card.style.display = "none";
+        }
+
+      });
+
+    });
+
+  });
+</script>
+    </div>
+  </main>
+
+
+  <footer class="site-footer">
+
+  <div class="container">
+
+    <nav class="footer-nav">
+
+      <a href="/o-nama/">
+        O nama
+      </a>
+
+      <a href="/sitemap.xml">
+        Sitemap
+      </a>
+
+    </nav>
+
+    <p>
+      &copy; 2026 Čuvanje Ljubimaca
+    </p>
+
+  </div>
+
+</footer>
+
+</body>
+</html>

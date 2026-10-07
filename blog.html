@@ -1,0 +1,98 @@
+---
+layout: default
+title: "Blog"
+permalink: /blog/
+---
+
+<section class="blog-page">
+
+  <h1>Blog</h1>
+
+  <p class="blog-intro">
+    Korisne informacije o čuvanju pasa, mačaka i drugih kućnih ljubimaca,
+    kao i priče ljudi koji se bave čuvanjem ljubimaca.
+  </p>
+
+  {% if site.posts.size > 0 %}
+
+    <div class="blog-list">
+
+      {% for post in paginator.posts %}
+
+        <article class="blog-card">
+
+          <div class="blog-card-content">
+
+            <p class="blog-card-date">
+              {{ post.date | date: "%d.%m.%Y." }}
+            </p>
+
+            <h2>
+              <a href="{{ post.url | relative_url }}">
+                {{ post.title }}
+              </a>
+            </h2>
+
+            {% if post.description %}
+              <p>{{ post.description }}</p>
+            {% else %}
+              <p>
+                {{ post.excerpt | strip_html | truncate: 180 }}
+              </p>
+            {% endif %}
+
+            <a
+              href="{{ post.url | relative_url }}"
+              class="blog-card-link"
+            >
+              Pročitaj više →
+            </a>
+
+          </div>
+
+        </article>
+
+      {% endfor %}
+
+    </div>
+
+    {% if paginator.total_pages > 1 %}
+
+      <nav class="pagination" aria-label="Stranice bloga">
+
+        {% if paginator.previous_page %}
+          <a href="{{ paginator.previous_page_path | relative_url }}">
+            ← Novije objave
+          </a>
+        {% endif %}
+
+        <span>
+          Stranica {{ paginator.page }} od {{ paginator.total_pages }}
+        </span>
+
+        {% if paginator.next_page %}
+          <a href="{{ paginator.next_page_path | relative_url }}">
+            Starije objave →
+          </a>
+        {% endif %}
+
+      </nav>
+
+    {% endif %}
+
+  {% else %}
+
+    <div class="blog-empty">
+
+      <h2>Blog uskoro</h2>
+
+      <p>
+        Ovde ćemo objavljivati korisne informacije o čuvanju i brizi
+        o kućnim ljubimcima, kao i priče ljudi koji nude svoje usluge.
+      </p>
+
+    </div>
+
+  {% endif %}
+
+</section>
