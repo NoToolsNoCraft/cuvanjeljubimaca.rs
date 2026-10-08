@@ -95,6 +95,8 @@
             src="{{ page.images[0] | relative_url }}" 
             alt="{{ page.title }}" 
             class="service-hero-image"
+            fetchpriority="high"
+            decoding="async"
           >
           <div class="service-hero-overlay">
             <h1>{{ page.title }}</h1>
@@ -111,37 +113,69 @@
       {% endif %}
 
       <!-- Quick Contact & Social Block -->
-      <div class="service-contact-grid">
-        <section class="service-info-box">
-          <h2>Kontakt</h2>
-          {% if page.phone %}
-            <p>
-              <strong>Telefon:</strong> 
-              <a href="tel:{{ page.phone }}">{{ page.phone }}</a>
-            </p>
-          {% endif %}
-          {% if page.email and page.email != "" %}
-            <p>
-              <strong>Email:</strong> 
-              <a href="mailto:{{ page.email }}">{{ page.email }}</a>
-            </p>
-          {% endif %}
-        </section>
 
-        {% if page.social.instagram or page.social.facebook %}
-          <section class="service-info-box">
-            <h2>Društvene mreže</h2>
-            <div class="social-buttons">
-              {% if page.social.instagram %}
-                <a href="{{ page.social.instagram }}" target="_blank" rel="nofollow noopener" class="social-button instagram-button">Instagram</a>
-              {% endif %}
-              {% if page.social.facebook %}
-                <a href="{{ page.social.facebook }}" target="_blank" rel="nofollow noopener" class="social-button facebook-button">Facebook</a>
-              {% endif %}
-            </div>
-          </section>
+{% assign has_phone = page.phone | default: "" | strip %}
+{% assign has_email = page.email | default: "" | strip %}
+{% assign has_instagram = page.social.instagram | default: "" | strip %}
+{% assign has_facebook = page.social.facebook | default: "" | strip %}
+
+{% if has_phone.size > 0 or has_email.size > 0 or has_instagram.size > 0 or has_facebook.size > 0 %}
+
+  <div class="service-contact-grid">
+
+    <!-- Kontakt -->
+    {% if has_phone.size > 0 or has_email.size > 0 %}
+      <section class="service-info-box">
+        <h2>Kontakt</h2>
+
+        {% if has_phone.size > 0 %}
+          <p>
+            <strong>Telefon:</strong>
+            <a href="tel:{{ has_phone }}">{{ has_phone }}</a>
+          </p>
         {% endif %}
-      </div>
+
+        {% if has_email.size > 0 %}
+          <p>
+            <strong>Email:</strong>
+            <a href="mailto:{{ has_email }}">{{ has_email }}</a>
+          </p>
+        {% endif %}
+      </section>
+    {% endif %}
+
+    <!-- Društvene mreže -->
+    {% if has_instagram.size > 0 or has_facebook.size > 0 %}
+      <section class="service-info-box">
+        <h2>Društvene mreže</h2>
+
+        <div class="social-buttons">
+
+          {% if has_instagram.size > 0 %}
+            <a href="{{ has_instagram }}"
+               target="_blank"
+               rel="nofollow noopener"
+               class="social-button instagram-button">
+              Instagram
+            </a>
+          {% endif %}
+
+          {% if has_facebook.size > 0 %}
+            <a href="{{ has_facebook }}"
+               target="_blank"
+               rel="nofollow noopener"
+               class="social-button facebook-button">
+              Facebook
+            </a>
+          {% endif %}
+
+        </div>
+      </section>
+    {% endif %}
+
+  </div>
+
+{% endif %}
 
       <!-- Quick Summary Details -->
       <h2>Usluga ukratko</h2>
@@ -182,11 +216,13 @@
         <h2>Galerija</h2>
         <div class="service-gallery">
           {% for image in page.images offset: 1 %}
-            <img 
-              src="{{ image | relative_url }}" 
-              alt="{{ page.title }} - slika {{ forloop.index }}"
-            >
-          {% endfor %}
+          <img 
+            src="{{ image | relative_url }}" 
+            alt="{{ page.title }} - slika {{ forloop.index }}"
+            loading="lazy"
+            decoding="async"
+          >
+        {% endfor %}
         </div>
       {% endif %}
 

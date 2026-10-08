@@ -10,11 +10,11 @@
 
 :root {
   /* Colour tokens – high contrast, 2026 friendly */
-  --bg: #f7faf8;
+  --bg: #d6f5ee;
   --surface: #ffffff;
   --surface-soft: #eef4f0;
-  --text: #15241e;               /* ≈ 15.5:1 on white */
-  --text-soft: #2c3e36;          /* ≈ 10.8:1 on white */
+  --text: #050807;               /* ≈ 15.5:1 on white */
+  --text-soft: #0a0c0b;          /* ≈ 10.8:1 on white */
   --text-muted: #4a5c54;         /* ≈ 7.2:1 on white – still AA */
   --border: #d8e4de;
   --border-strong: #b7cdc3;
@@ -280,7 +280,7 @@ main {
 .home-provider-cta {
   margin-top: 72px;
   padding: 48px 36px;
-  background: var(--accent-soft);
+  background: white;
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-lg);
   text-align: center;

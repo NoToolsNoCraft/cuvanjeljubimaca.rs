@@ -24,7 +24,7 @@ email: "j.visnjaa@gmail.com"
 price: "Po dogovoru"
 
 images:
-  - "/assets/images/services/visnja1.webp"
+  - "/assets/images/services/zuzu1.webp"
   - "/assets/images/services/visnja2.webp"
   - "/assets/images/services/visnja4.webp"
   - "/assets/images/services/visnja3.webp"
